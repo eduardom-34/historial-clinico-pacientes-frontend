@@ -3,6 +3,13 @@
   <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon style="color: white;">menu</mat-icon>
   </button>
+
+  <span style="flex: 1 1 auto;"></span>
+  <label style="font-size: 14px; margin-right: 20px;;">{{ username }}</label>
+  <button mat-icon-button (click)="cerrarSesion()" style="color: white;">
+    <mat-icon>logout</mat-icon>
+  </button>
+
 </mat-toolbar>
 
 <mat-sidenav-container>
