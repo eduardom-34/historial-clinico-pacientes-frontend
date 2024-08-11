@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from '../material/material.module';
+import { LayoutRoutingModule } from './layout-routing.module';
 import { AppRoutingModule } from '../app-routing.module';
 
 
@@ -16,7 +17,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     MaterialModule,
-    AppRoutingModule
+    LayoutRoutingModule
   ],
   exports: [
     ReactiveFormsModule,
