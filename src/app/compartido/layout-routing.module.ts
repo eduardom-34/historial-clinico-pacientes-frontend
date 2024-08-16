@@ -1,9 +1,11 @@
+import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EspecialidadComponent } from '../especialidad/pages/especialidad/especialidad.component';
+import { ListadoEspecialidadComponent } from '../especialidad/pages/listado-especialidad/listado-especialidad.component';
+import {  } from '../especialidad/especialidad.module'
 
 const routes: Routes = [
   {
@@ -17,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'especialidades',
-        component: EspecialidadComponent,
+        component: ListadoEspecialidadComponent,
         pathMatch: 'full'
       },
       {

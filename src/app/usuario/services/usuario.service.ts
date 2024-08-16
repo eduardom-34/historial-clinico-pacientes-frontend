@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 })
 export class UsuarioService {
 
-  baseUrl: string = environment.apiUrl + "usuario/"
+  baseUrl: string = environment.apiUrl + "Usuario/"
 
   constructor( private http: HttpClient) { }
 

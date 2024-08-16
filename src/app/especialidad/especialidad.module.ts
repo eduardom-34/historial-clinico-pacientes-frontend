@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompartidoModule } from '../compartido/compartido.module';
 import { MaterialModule } from '../material/material.module';
-import { EspecialidadComponent } from './pages/especialidad/especialidad.component';
 import { EspecialidadService } from './services/especialidad.service';
+import { ListadoEspecialidadComponent } from './pages/listado-especialidad/listado-especialidad.component';
 
 
 
 @NgModule({
   declarations: [
-    EspecialidadComponent
+    ListadoEspecialidadComponent
   ],
   imports: [
     CommonModule,

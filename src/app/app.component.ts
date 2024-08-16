@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ValueChangeEvent } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +17,7 @@ export class AppComponent implements OnInit {
       next: response => this.usuarios = response,
       error: error => console.log(error),
       complete: () => console.log("La solicitud esta complete")
-     })
+     });
   }
 
 }
