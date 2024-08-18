@@ -6,6 +6,7 @@ import { EspecialidadService } from '../../services/especialidad.service';
 import { CompartidoService } from '../../../compartido/compartido.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEspecialidadComponent } from '../../modales/modal-especialidad/modal-especialidad.component';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-listado-especialidad',
@@ -62,6 +63,33 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit{
           );
       },
       error: (e) => {}
+    });
+   }
+
+   removerEspecialidad( especialidad: Especialidad) {
+    Swal.fire({
+      title: 'Desea Eliminar la Especialidad',
+      text: especialidad.nombreEspecialidad,
+      icon: 'warning',
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: 'Si eliminar',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'No'
+    }).then((resultado) => {
+      if(resultado.isConfirmed){
+        this._especialidadServicio.eliminar(especialidad.id).subscribe({
+          next: (data) => {
+            if(data.isExitoso){
+              this._compartidoService.mostrarAlerta('La especialidad fue eliminada', 'Completo');
+              this.obtenerEspecialidades();
+            } else{
+              this._compartidoService.mostrarAlerta('No se pudo eliminar la especialidad', 'Error!')
+            }
+          },
+          error: (e) => {}
+        });
+      }
     });
    }
 
