@@ -40,6 +40,15 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit{
         })
    }
 
+   editarEspecialiad( especialidad: Especialidad ) {
+    this.dialog
+        .open(ModalEspecialidadComponent, {disableClose: true, width: '400px', data: especialidad})
+        .afterClosed()
+        .subscribe((resultado) => {
+          if(resultado === 'true') this.obtenerEspecialidades();
+        })
+   }
+
    obtenerEspecialidades() {
     this._especialidadServicio.lista().subscribe({
       next: (data) => {

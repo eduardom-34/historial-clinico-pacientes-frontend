@@ -25,7 +25,13 @@ export class ModalEspecialidadComponent implements OnInit {
       nombreEspecialidad: ['', Validators.required],
       descripcion: ['', Validators.required],
       estado: ['', Validators.required]
-    })
+    });
+
+    if(this.datosEspecialidad != null){
+      this.titulo = "Editar";
+      this.nombreBoton = 'Actualizar';
+    }
+
   }
 
   ngOnInit(): void {
