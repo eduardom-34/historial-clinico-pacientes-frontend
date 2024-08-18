@@ -63,7 +63,9 @@ export class ModalEspecialidadComponent implements OnInit {
             this._compartidoServicio.mostrarAlerta("No se pudo crear la especialidad", 'Error!');
           }
         },
-        error: (e) => { }
+        error: (e) => {
+          this._compartidoServicio.mostrarAlerta(e.error.errores, "Error!");
+         }
       })
     } else {
       //Editando o actualizando especialidad
