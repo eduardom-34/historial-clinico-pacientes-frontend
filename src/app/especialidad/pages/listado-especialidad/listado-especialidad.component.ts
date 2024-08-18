@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { EspecialidadService } from '../../services/especialidad.service';
 import { CompartidoService } from '../../../compartido/compartido.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalEspecialidadComponent } from '../../modales/modal-especialidad/modal-especialidad.component';
 
 @Component({
   selector: 'app-listado-especialidad',
@@ -25,9 +27,18 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator) paginacionTabla!: MatPaginator
 
   constructor( private _especialidadServicio: EspecialidadService,
-               private _compartidoService: CompartidoService
+               private _compartidoService: CompartidoService,
+               private dialog: MatDialog
    ) {}
 
+   nuevoEspecialidad() {
+    this.dialog
+        .open(ModalEspecialidadComponent, {disableClose: true, width: '400px'})
+        .afterClosed()
+        .subscribe((resultado) => {
+          if(resultado === 'true') this.obtenerEspecialidades();
+        })
+   }
 
    obtenerEspecialidades() {
     this._especialidadServicio.lista().subscribe({

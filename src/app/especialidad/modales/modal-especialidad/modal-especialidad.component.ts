@@ -40,7 +40,7 @@ export class ModalEspecialidadComponent implements OnInit {
 
   crearModificarEspecialidad() {
     const especialidad: Especialidad = {
-      id: this.datosEspecialidad.id == null ? 0 : this.datosEspecialidad.id,
+      id: this.datosEspecialidad == null ? 0 : this.datosEspecialidad.id,
       nombreEspecialidad: this.formEspecialidad.value.nombreEspecialidad,
       descripcion: this.formEspecialidad.value.descripcion,
       estado: parseInt(this.formEspecialidad.value.estado)

@@ -4,13 +4,15 @@
 <div class="content">
   <mat-card class="m-2">
     <mat-card-title>
-
+      <button mat-raised-button color="primary" (click)="nuevoEspecialidad()" class="m-2">
+        <mat-icon mat-list-icon>add</mat-icon>Nuevo
+      </button>
     </mat-card-title>
     <mat-divider></mat-divider>
 
     <mat-card-content class="mt-2">
 
-      <div class="mat-elevation-z8">
+      <div class="mat-elevation-z8" style="overflow-x: auto;">
         <table mat-table [dataSource]="dataSource">
 
           <!-- Position Column -->
