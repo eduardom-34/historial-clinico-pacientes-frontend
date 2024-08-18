@@ -12,6 +12,11 @@
 
     <mat-card-content class="mt-2">
 
+      <mat-form-field style="width: 100%;;">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="aplicarFiltroListado($event)" placeholder="Filtro" #input>
+      </mat-form-field>
+
       <div class="mat-elevation-z8" style="overflow-x: auto;">
         <table mat-table [dataSource]="dataSource">
 
@@ -42,6 +47,11 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro "{{ input.value }}"</td>
+          </tr>
+
         </table>
 
         <mat-paginator [pageSizeOptions]="[5, 10, 20]"

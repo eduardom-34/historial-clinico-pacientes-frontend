@@ -93,6 +93,14 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit{
     });
    }
 
+   aplicarFiltroListado( event: Event ) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+    if( this.dataSource.paginator ){
+      this.dataSource.paginator.firstPage();
+    }
+   }
+
   ngOnInit(): void {
     this.obtenerEspecialidades();
 
