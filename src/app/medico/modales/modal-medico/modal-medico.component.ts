@@ -33,7 +33,7 @@ export class ModalMedicoComponent implements OnInit {
     direccion: ['', Validators.required],
     telefono: [''],
     genero: ['M', Validators.required],
-    especialidad: ['', Validators.required],
+    especialidadId: ['', Validators.required],
     estado: ['1', Validators.required],
    });
    if( this.datosMedico != null){

@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MedicoService } from '../../services/medico.service';
 import { CompartidoService } from '../../../compartido/compartido.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalMedicoComponent } from '../../modales/modal-medico/modal-medico.component';
 
 @Component({
   selector: 'app-listado-medico',
@@ -30,7 +32,8 @@ export class ListadoMedicoComponent implements OnInit, AfterViewInit {
 
   constructor(
     private _medicoServicio: MedicoService,
-    private _compartidoServicio: CompartidoService
+    private _compartidoServicio: CompartidoService,
+    private dialog: MatDialog
   ) { }
 
   ObtenerMedicos() {
@@ -48,7 +51,12 @@ export class ListadoMedicoComponent implements OnInit, AfterViewInit {
   }
 
   nuevoMedico() {
-
+    this.dialog
+        .open(ModalMedicoComponent, {disableClose: true, width: '600px'})
+        .afterClosed()
+        .subscribe((resultado) => {
+          if(resultado === 'true') this.ObtenerMedicos();
+        });
   }
 
   editarMedico( medico: Medico ) {

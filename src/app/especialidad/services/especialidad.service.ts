@@ -10,7 +10,7 @@ import { Especialidad } from '../interfaces/especialidad';
 })
 export class EspecialidadService {
 
-  baseUrl: string = environment.apiUrl + 'especialidad/';
+  baseUrl: string = environment.apiUrl + 'Especialidad/';
 
   constructor( private http: HttpClient ) { }
 
@@ -19,7 +19,7 @@ export class EspecialidadService {
   }
 
   listaActivos(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.baseUrl}listadoActivo`);
+    return this.http.get<ApiResponse>(`${this.baseUrl}ListadoActivos`);
   }
 
   crear ( request: Especialidad): Observable<ApiResponse> {
