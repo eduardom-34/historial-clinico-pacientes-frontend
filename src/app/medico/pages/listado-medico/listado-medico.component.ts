@@ -6,6 +6,7 @@ import { MedicoService } from '../../services/medico.service';
 import { CompartidoService } from '../../../compartido/compartido.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalMedicoComponent } from '../../modales/modal-medico/modal-medico.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listado-medico',
@@ -60,11 +61,38 @@ export class ListadoMedicoComponent implements OnInit, AfterViewInit {
   }
 
   editarMedico( medico: Medico ) {
-
+    this.dialog
+        .open(ModalMedicoComponent, {disableClose: true, width: '600px', data: medico})
+        .afterClosed()
+        .subscribe((resultado) => {
+          if( resultado === 'true' ) this.ObtenerMedicos();
+        });
   }
 
   removerMedico( medico: Medico ){
-
+    Swal.fire({
+      title: 'Desea Eliminar el Medico?',
+      text: medico.apellidos+ ' '+ medico.nombres,
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Si, Eliminar',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'No',
+    }).then((resultado) => {
+      if(resultado.isConfirmed){
+        this._medicoServicio.eliminar(medico.id).subscribe({
+          next: (data) => {
+            if(data.isExitoso){
+              this._compartidoServicio.mostrarAlerta('El medico fue eliminado', 'Completo');
+              this.ObtenerMedicos();
+            } else {
+              this._compartidoServicio.mostrarAlerta('no se pudo eliminar el medico', 'Error!');
+            }
+          }
+        })
+      }
+    })
   }
 
   aplicarFiltroListado( event: Event ){
