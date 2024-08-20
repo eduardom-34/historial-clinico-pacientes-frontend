@@ -87,7 +87,7 @@ export class ModalMedicoComponent implements OnInit {
           }
         },
         error: (e) => {
-          this._compartidoServicio.mostrarAlerta(e.error.errores, "Error!");
+          this._compartidoServicio.mostrarAlerta(e.error.mensaje, "Error!");
         }
       });
     } else {
@@ -102,7 +102,7 @@ export class ModalMedicoComponent implements OnInit {
           }
         },
         error: (e) => {
-          this._compartidoServicio.mostrarAlerta(e.error.errores, "Error!");
+          this._compartidoServicio.mostrarAlerta(e.error.mensaje, "Error!");
         }
       })
     }

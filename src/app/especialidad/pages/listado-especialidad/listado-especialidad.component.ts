@@ -62,7 +62,9 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit{
             'No se encontraron datos', 'Advertencia!'
           );
       },
-      error: (e) => {}
+      error: (e) => {
+        this._compartidoService.mostrarAlerta(e.error.mensaje, "Error!");
+      }
     });
    }
 
@@ -87,7 +89,9 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit{
               this._compartidoService.mostrarAlerta('No se pudo eliminar la especialidad', 'Error!')
             }
           },
-          error: (e) => {}
+          error: (e) => {
+            this._compartidoService.mostrarAlerta(e.error.mensaje, "Error!");
+          }
         });
       }
     });

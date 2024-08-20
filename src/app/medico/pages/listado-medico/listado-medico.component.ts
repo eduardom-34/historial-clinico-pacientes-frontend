@@ -47,7 +47,9 @@ export class ListadoMedicoComponent implements OnInit, AfterViewInit {
         else
           this._compartidoServicio.mostrarAlerta('No se econtraron datos', 'Advertencia!');
       },
-      error: (e) => { }
+      error: (e) => {
+        this._compartidoServicio.mostrarAlerta(e.error.mensaje, "Error!");
+      }
     })
   }
 
@@ -89,6 +91,9 @@ export class ListadoMedicoComponent implements OnInit, AfterViewInit {
             } else {
               this._compartidoServicio.mostrarAlerta('no se pudo eliminar el medico', 'Error!');
             }
+          },
+          error: (e) => {
+            this._compartidoServicio.mostrarAlerta(e.error.mensaje, "Error!");
           }
         })
       }
