@@ -9,6 +9,7 @@ import {  } from '../especialidad/especialidad.module'
 import {  } from '../medico/medico.module'
 import { ListadoMedicoComponent } from '../medico/pages/listado-medico/listado-medico.component';
 import { authGuard } from '../_guards/auth.guard';
+import { ListadoUsuarioComponent } from '../usuario/pages/listado-usuario/listado-usuario.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
         path: 'medicos',
         component: ListadoMedicoComponent,
         pathMatch: 'full'
+      },
+      {
+        path: 'usuarios',
+        component: ListadoUsuarioComponent,
+        pathMatch: "full"
       },
       {
         path: '**',
