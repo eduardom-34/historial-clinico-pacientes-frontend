@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { UsuarioService } from '../../services/usuario.service';
 import { CompartidoService } from '../../../compartido/compartido.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalUsuarioComponent } from '../../modales/modal-usuario/modal-usuario.component';
 
 @Component({
   selector: 'app-listado-usuario',
@@ -26,7 +28,9 @@ export class ListadoUsuarioComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
-  constructor( private _usuarioServicio: UsuarioService, private _compartidoServicio: CompartidoService ) {}
+  constructor( private _usuarioServicio: UsuarioService,
+    private _compartidoServicio: CompartidoService,
+    private dialog: MatDialog ) {}
 
   obtenerUsuario() {
     this._usuarioServicio.lista().subscribe({
@@ -45,7 +49,12 @@ export class ListadoUsuarioComponent implements OnInit, AfterViewInit {
   }
 
   nuevoUsuario() {
-
+    this.dialog
+        .open(ModalUsuarioComponent, {disableClose: true, width: '600px'})
+        .afterClosed()
+        .subscribe((resultado) => {
+          if ( resultado === 'true' ) this.obtenerUsuario();
+        })
   }
 
   aplicarFiltroListado( event: Event ) {

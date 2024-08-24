@@ -62,4 +62,8 @@ export class ModalUsuarioComponent {
   });
  }
 
+ get email(){
+  return this.formUsuario.get("email");
+ }
+
 }
