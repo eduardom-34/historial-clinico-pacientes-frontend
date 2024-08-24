@@ -10,4 +10,4 @@ update from idx
 
 second attem
 
-from the app
+I need to fix the ussue for the password, it dos not say the requirements
