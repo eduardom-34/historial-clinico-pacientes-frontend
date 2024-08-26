@@ -57,7 +57,7 @@ export class ModalUsuarioComponent {
       this.modal.close("true");
     },
     error: (e) => {
-      this._compartidoServicio.mostrarAlerta(e.error.errores, 'Error');
+      this._compartidoServicio.mostrarAlerta(e.error[0].description, 'Error');
     }
   });
  }
